@@ -5,6 +5,8 @@ import CheckoutPage from './pages/CheckoutPage'
 import AdminDashboard from './admin/AdminDashboard';
 import LoginPage from './pages/LoginPage';
 import RequireAuth from './auth/RequireAuth';
+import AdminOrders from './admin/AdminOrders';
+
 function App() {
   return (
     <Routes>
@@ -12,7 +14,12 @@ function App() {
       <Route path="/cart" element={<CartPage />} />
       <Route path="/checkout" element={<CheckoutPage />} /> 
       <Route path="/admin" element={<RequireAuth> <AdminDashboard /> </RequireAuth>} />
-      <Route path="/login" element={<LoginPage />} />	  
+      <Route path="/login" element={<LoginPage />} />	 
+      <Route path="/admin/orders" element={
+        <RequireAuth>
+          <AdminOrders />
+        </RequireAuth>
+      } />
     </Routes>
   );
 }
