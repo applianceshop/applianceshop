@@ -11,7 +11,7 @@ const CartPage = () => {
   return (
     <>
       <Navbar />
-      <div style={{ padding: '2rem' }}>
+      <div style={{ padding: '2rem' , color:'white', }}>
         <h2>Your Cart</h2>
         {cart.length === 0 ? (
           <p>Your cart is empty.</p>
