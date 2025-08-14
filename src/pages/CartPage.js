@@ -11,8 +11,10 @@ const CartPage = () => {
   return (
     <>
       <Navbar />
-      <div style={{ padding: '2rem' }}>
-        <h2>Your Cart</h2>
+      <div class="bg-card rounded-lg shadow-lg px-6 py-1 border border-customgray mb-6">
+              
+      <div style={{ padding: '2rem' , color:'white', }}>
+        <h2> <b>Your Cart</b></h2>
         {cart.length === 0 ? (
           <p>Your cart is empty.</p>
         ) : (
@@ -21,7 +23,7 @@ const CartPage = () => {
               {cart.map(item => (
                 <li key={item.id} style={{ marginBottom: '1rem' }}>
                   <strong>{item.name}</strong> — ${item.price} × {item.quantity}
-                  <button onClick={() => removeFromCart(item.id)} style={{ marginLeft: '1rem' }}>
+                  <button class="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={() => removeFromCart(item.id)} style={{ marginLeft: '1rem' }}>
                     Remove
                   </button>
                 </li>
@@ -43,6 +45,7 @@ const CartPage = () => {
             </Link>	
           </>
         )}
+      </div>
       </div>
     </>
   );
