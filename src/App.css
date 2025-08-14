@@ -28,6 +28,19 @@
   color: #61dafb;
 }
 
+.Product-container{
+  display: flex; 
+margin-bottom: 2rem; 
+justify-content: space-between; 
+align-items: center; 
+
+}
+ @media screen and (max-width: 691px) {
+  .Product-container{
+  display: 'flex';
+  flex-direction: column;
+}
+    }
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

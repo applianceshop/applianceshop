@@ -20,17 +20,12 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div class="bg-card rounded-lg shadow-lg px-6 py-1 border border-customgray mb-6" style={{ margin: '15px' }} >
-        <h1 style={{color:'white', fontWeight:'bold'}}>Products</h1>
+      <div  class="bg-card rounded-lg shadow-lg px-6 py-1 border border-customgray mb-6" style={{ margin: '15px' }} >
+        <h1 className='Product-container' style={{color:'white', fontWeight:'bold'}}>Products</h1>
         {products.length === 0 ? (
           <p>No products available.</p>
         ) : (
-          <div style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '1.5rem',
-            marginTop: '1rem'
-          }}>
+          <div className='Product-container' >
             {products.map(product => (
               <ProductCard key={product.id} product={product} />
             ))}
