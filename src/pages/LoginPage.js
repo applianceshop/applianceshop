@@ -8,8 +8,10 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (event) => {
     try {
+      event.preventDefault()
+      console.log("email"+email+"password"+password)
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/admin');
     } catch (err) {
@@ -20,6 +22,7 @@ const LoginPage = () => {
   return (
     <div style={{ padding: '2rem', maxWidth: '400px', margin: '0 auto' }}>
       <h2>Admin Login</h2>
+      <form onSubmit={handleLogin}>
       <input
         type="email"
         placeholder="Email"
@@ -34,7 +37,7 @@ const LoginPage = () => {
         onChange={e => setPassword(e.target.value)}
         style={{ width: '100%', marginBottom: '1rem', padding: '0.5rem' }}
       />
-      <button onClick={handleLogin} style={{
+      <button type='submit' style={{
         padding: '0.5rem 1rem',
         backgroundColor: '#1f2937',
         color: '#fff',
@@ -44,6 +47,7 @@ const LoginPage = () => {
       }}>
         Login
       </button>
+      </form>
     </div>
   );
 };
