@@ -97,10 +97,10 @@ const AdminDashboard = () => {
   };
   return (
   <>
-    <Navbar />
+    {/* <Navbar /> */}
     <button
       onClick={() => signOut(auth)}
-      style={{
+      style={{color:'white',
         position: 'absolute',
         right: '2rem',
         top: '1rem',
@@ -115,30 +115,31 @@ const AdminDashboard = () => {
       Logout
     </button>
 
-    <div style={{ padding: '2rem' }}>
-      <h2>Admin Dashboard</h2>
+    <div style={{ padding: '2rem',color:'white' }}>
+      <h2><b>Admin Dashboard</b></h2>
 
       <Link to="/admin/orders">
-        <button style={{ marginBottom: '1rem', padding: '0.5rem 1rem' }}>
+        <button class="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" style={{ marginBottom: '1rem', padding: '0.5rem 1rem' }}>
           View Orders
         </button>
       </Link>
-
+<div class="bg-card rounded-lg shadow-lg px-6 py-1 border border-customgray mb-6">
+              <div class="flex justify-between items-center space-x-4 py-4">
       <h3>Add New Product</h3>
-      <input
+      <input class="p-1 rounded w-80 text-sm text-gray-300 bg-panel focus:outline-none"
         type="text"
         placeholder="Name"
         value={newProduct.name}
         onChange={e => setNewProduct({ ...newProduct, name: e.target.value })}
       />
       <input
-        type="text"
+        type="text" class="p-1 rounded w-80 text-sm text-gray-300 bg-panel focus:outline-none" 
         placeholder="Category"
         value={newProduct.category}
         onChange={e => setNewProduct({ ...newProduct, category: e.target.value })}
       />
       <input
-        type="number"
+        type="number" class="p-1 rounded w-80 text-sm text-gray-300 bg-panel focus:outline-none"
         placeholder="Price"
         value={newProduct.price}
         onChange={e => setNewProduct({ ...newProduct, price: e.target.value })}
@@ -147,7 +148,7 @@ const AdminDashboard = () => {
         type="file"
         onChange={e => setNewProduct({ ...newProduct, imageFile: e.target.files[0] })}
       />
-      <input
+      <input class="p-1 rounded w-80 text-sm text-gray-300 bg-panel focus:outline-none"
         type="number"
         placeholder="Stock"
         value={newProduct.stock || ''}
@@ -156,7 +157,8 @@ const AdminDashboard = () => {
       <button onClick={handleAddProduct}>
         {editingProduct ? 'Update Product' : 'Add Product'}
       </button>
-
+</div>
+</div>
       <h3 style={{ marginTop: '2rem' }}>Existing Products</h3>
       <ul>
         {products.map(product => (
@@ -167,13 +169,13 @@ const AdminDashboard = () => {
               style={{ height: 50, marginRight: 10 }}
             />
             <strong>{product.name}</strong> — ${product.price} ({product.category}) — Stock: {product.stock}
-            <button
+            <button class="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none"
               onClick={() => handleDelete(product.id)}
               style={{ marginLeft: '1rem' }}
             >
               Delete
-            </button>
-			<button onClick={() => handleEdit(product)} style={{ marginLeft: '0.5rem' }}>
+            </button> 
+			<button class="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={() => handleEdit(product)} style={{ marginLeft: '0.5rem' }}>
               Edit
             </button>
           </li>

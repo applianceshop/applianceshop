@@ -2,6 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
@@ -15,6 +21,103 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+       <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./node_modules/lucide/dist/umd/lucide.js"></script>
+    <!--
+    use this for production
+    script src="https://unpkg.com/lucide@latest"></script
+    -->
+    <script type="module" src="./javascript/main.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                       primary: "#ffffff",  // White text for contrast
+                        secondary: "#00d4ff", // Bright teal from emcrey
+
+                        //gray-50: #f9fafb 
+                        //gray-100: #f3f4f6 
+                        //gray-200: #e5e7eb 
+                        //gray-300: #d1d5db 
+                        //gray-400: #9ca3af 
+                        //gray-500: #6b7280 
+                        //gray-600: #4b5563 
+                        //gray-700: #374151 
+                        //gray-800: #1f2937 
+                        //gray-900: #111827 
+
+                        //green-50: #f0fdf4
+                        //green-100: #dcfce7
+                        //green-200: #b2f2bb
+                        //green-300: #82e0c6
+                        //green-400: #48d391
+                        //green-500: #22c55e
+                        //green-600: #16a34a
+                        //green-700: #15803d
+                        //green-800: #166534
+                        //green-900: #14532d
+                        //green-950: #052e16
+
+                        iconBorder: "#9ca3af!Important", // gray-400
+                        iconBorderHighlighted: "#00d4ff!Important", // Bright teal from emcrey
+                        iconBorderSelected: "#e2e8f0!Important", // gray-300
+                        iconBorderDisabled: "#4B5563!Important", // gray-600
+                        iconBorderOption: "#6B7280!Important", //gray-500
+
+                        icon: "#9ca3af!Important", // gray-400
+                        iconHighlighted: "#00d4ff!Important", // Bright teal from emcrey
+                        iconSelected: "#e2e8f0!Important", // gray-300
+                        iconDisabled: "#4B5563!Important", // gray-600
+
+                        buttonBorder: "#00d4ff!Important", // Bright teal from emcrey
+                        buttonBorderHighlighted: "#00d4ff!Important", // Bright teal from emcrey
+                        buttonBorderSelected: "#00d4ff!Important", // Bright teal from emcrey
+                        buttonDisabled: "#00d4ff!Important", // Bright teal from emcrey
+
+                        buttonText: "#d1d5db!Important", //grey-300
+                        buttonTextHighlighted: "#00d4ff!Important", //Bright teal from emcrey
+                        buttonTextSelected: "#f9fafb!Important", //Bright teal from emcrey
+                        buttonBGHighlighted: "#374151!Important", //grey-700
+
+                        inputText: "#d1d5db!Important", //grey-300
+
+                        permissionsBorderEnabled: "#9ca3af!Important", // gray-600
+                        permissionsBorderDisabled: "#d1d5db!Important",
+                        permissionsBorderStyleEnabled: "solid",
+                        permissionsBorderStyle: "Disabled",
+                        permissionsTextEnabled: "#9ca3af!Important", // gray-400
+                        permissionsTextDisabled: "#6b7280!Important", // gray-500
+                        permissionsBGEnabled: "#6b7280!Important", // gray-500
+                        permissionsBGDisabled: "#4b5563!Important", // gray-600
+
+                        customgray: "#4a4848!Important",
+                        button: "#00d4ff!Important" , // Bright teal from emcrey 
+                        accent: "#635bff",   // Vibrant purple from emcrey
+                        panel: "#0a2540",    // Dark blue background
+                        card: "#1a365d"      // Slightly lighter blue for cards
+                    }
+                }
+            }
+        }
+
+
+
+    </script>
+    
+     <style>
+        body {
+            background-color: #0a2540;
+        }
+        .credit-card {
+            background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+            border-radius: 8px;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -24,7 +127,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>baytak plast</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

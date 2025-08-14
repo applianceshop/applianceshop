@@ -30,11 +30,11 @@ const AdminOrders = () => {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h2>Customer Orders</h2>
+    <div style={{ padding: '2rem',  }}>
+      <h2 style={{color:'white'}}><b>Customer Orders</b></h2>
 
       {/* Dropdown */}
-      <label style={{ marginRight: '0.5rem' }}>Sort by date:</label>
+      <label style={{ marginRight: '0.5rem',color:'white' }}>Sort by date:</label>
       <select
         value={sortOrder}
         onChange={e => setSortOrder(e.target.value)}
