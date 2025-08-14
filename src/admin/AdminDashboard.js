@@ -119,27 +119,27 @@ const AdminDashboard = () => {
       <h2><b>Admin Dashboard</b></h2>
 
       <Link to="/admin/orders">
-        <button class="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" style={{ marginBottom: '1rem', padding: '0.5rem 1rem' }}>
+        <button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" style={{ marginBottom: '1rem', padding: '0.5rem 1rem' }}>
           View Orders
         </button>
       </Link>
-<div class="bg-card rounded-lg shadow-lg px-6 py-1 border border-customgray mb-6">
-              <div class="flex justify-between items-center space-x-4 py-4">
+<div className="bg-card rounded-lg shadow-lg px-6 py-1 border border-customgray mb-6">
+              <div className="flex justify-between items-center space-x-4 py-4">
       <h3>Add New Product</h3>
-      <input class="p-1 rounded w-80 text-sm text-gray-300 bg-panel focus:outline-none"
+      <input className="p-1 rounded w-80 text-sm text-gray-300 bg-panel focus:outline-none"
         type="text"
         placeholder="Name"
         value={newProduct.name}
         onChange={e => setNewProduct({ ...newProduct, name: e.target.value })}
       />
       <input
-        type="text" class="p-1 rounded w-80 text-sm text-gray-300 bg-panel focus:outline-none" 
+        type="text" className="p-1 rounded w-80 text-sm text-gray-300 bg-panel focus:outline-none" 
         placeholder="Category"
         value={newProduct.category}
         onChange={e => setNewProduct({ ...newProduct, category: e.target.value })}
       />
       <input
-        type="number" class="p-1 rounded w-80 text-sm text-gray-300 bg-panel focus:outline-none"
+        type="number" className="p-1 rounded w-80 text-sm text-gray-300 bg-panel focus:outline-none"
         placeholder="Price"
         value={newProduct.price}
         onChange={e => setNewProduct({ ...newProduct, price: e.target.value })}
@@ -148,7 +148,7 @@ const AdminDashboard = () => {
         type="file"
         onChange={e => setNewProduct({ ...newProduct, imageFile: e.target.files[0] })}
       />
-      <input class="p-1 rounded w-80 text-sm text-gray-300 bg-panel focus:outline-none"
+      <input className="p-1 rounded w-80 text-sm text-gray-300 bg-panel focus:outline-none"
         type="number"
         placeholder="Stock"
         value={newProduct.stock || ''}
@@ -169,13 +169,13 @@ const AdminDashboard = () => {
               style={{ height: 50, marginRight: 10 }}
             />
             <strong>{product.name}</strong> — ${product.price} ({product.category}) — Stock: {product.stock}
-            <button class="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none"
+            <button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none"
               onClick={() => handleDelete(product.id)}
               style={{ marginLeft: '1rem' }}
             >
               Delete
             </button> 
-			<button class="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={() => handleEdit(product)} style={{ marginLeft: '0.5rem' }}>
+			<button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={() => handleEdit(product)} style={{ marginLeft: '0.5rem' }}>
               Edit
             </button>
           </li>
