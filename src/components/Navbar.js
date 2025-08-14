@@ -27,7 +27,7 @@ const Navbar = () => {
                 <div class="flex items-center gap-3" style={{width:'381px',height:'181px'}}>
                     <img  style={{width:'381px',height:'181px'}} src={EmcreyLogo} alt="eMcREY Logo" loading="lazy" />
                 </div>
-                <div style={{display:'flex'}}> <Link class="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 my-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" to="/" >Home</Link>
+                <div style={{display:'flex', width:'200px'}}> <Link class="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 my-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" to="/" >Home</Link>
         <Link class="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 my-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" to="/cart" style={{ color: 'white' }}>Cart</Link>
     </div>
    
