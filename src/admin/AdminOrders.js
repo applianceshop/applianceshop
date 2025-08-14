@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { collection, getDocs, updateDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { format } from 'date-fns';
-
+import Navbar from '../components/Navbar';
 const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
   const [sortOrder, setSortOrder] = useState('desc'); // 'desc' for latest first
@@ -31,6 +31,7 @@ const AdminOrders = () => {
 
   return (
     <div style={{ padding: '2rem',  }}>
+      <Navbar isAdmin={true}/>
       <h2 style={{color:'white'}}><b>Customer Orders</b></h2>
 
       {/* Dropdown */}

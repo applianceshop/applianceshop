@@ -30,9 +30,10 @@
 
 .Product-container{
   display: flex; 
-margin-bottom: 2rem; 
+margin: 2rem; 
 justify-content: space-between; 
 align-items: center; 
+
 
 }
  @media screen and (max-width: 691px) {

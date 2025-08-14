@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
 import BAYTAKLOGO from '../images/WhatsApp Image 2025-08-14 at 11.10.30_acec9ec0.jpg'
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     // <nav style={{
     //   padding: '1rem 2rem',
@@ -28,9 +28,13 @@ const Navbar = () => {
                 <div class="flex items-center gap-3" style={{width:'200px',height:'200px'}}>
                     <img  style={{width:'200px',height:'200px'}} src={BAYTAKLOGO} alt="Baytak Logo" loading="lazy" />
                 </div>
-                <div style={{display:'flex', width:'200px'}}> <Link class="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 my-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" to="/" >Home</Link>
+                {props.isAdmin ? <div style={{display:'flex', }}> <Link class="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 my-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" to="/admin" >Home</Link>
+        {/* <Link class="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 my-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" to="/cart" style={{ color: 'white' }}>Cart</Link> */}
+    </div> : 
+                <div style={{display:'flex', }}> <Link class="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 my-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" to="/" >Home</Link>
         <Link class="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 my-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" to="/cart" style={{ color: 'white' }}>Cart</Link>
     </div>
+    }
    
                 
             </div>
