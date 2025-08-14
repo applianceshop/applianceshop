@@ -58,6 +58,7 @@ const AdminOrders = () => {
         >
           <p><strong>Name:</strong> {order.name || 'N/A'}</p>
           <p><strong>Address:</strong> {order.address}</p>
+		  <p><strong>Phone:</strong> {order.phone}</p>
           <p><strong>Status:</strong> {order.status}</p>
           <p><strong>Total:</strong> ${order.total}</p>
           <p><strong>Ordered At:</strong> {order.timestamp?.seconds ? format(new Date(order.timestamp.seconds * 1000), 'PPpp') : 'N/A'}</p>
