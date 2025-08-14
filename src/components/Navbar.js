@@ -1,6 +1,7 @@
 // src/components/Navbar.js
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../App.css';
 import BAYTAKLOGO from '../images/WhatsApp Image 2025-08-14 at 11.10.30_acec9ec0.jpg'
 const Navbar = () => {
   return (
@@ -19,7 +20,7 @@ const Navbar = () => {
     //     <Link class="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 my-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" to="/cart" style={{ color: 'white' }}>Cart</Link>
     //   </div>
     // </nav>
-    <div class="flex justify-between items-center mb-8" style={{ margin: '15px' }}>
+    <div className="Product-container" >
                 <div style={{width:'200px'}} class="flex items-center gap-4">
                     <p class="text-3xl font-bold text-white">BAYTAK PLAST & DETERGENTS</p>
                     {/* <span class="text-gray-300">{getCurrentDate('/')}</span> */}
