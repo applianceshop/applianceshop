@@ -154,7 +154,7 @@ const AdminDashboard = () => {
         value={newProduct.stock || ''}
         onChange={e => setNewProduct({ ...newProduct, stock: e.target.value })}
       />
-      <button onClick={handleAddProduct}>
+      <button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={handleAddProduct}>
         {editingProduct ? 'Update Product' : 'Add Product'}
       </button>
 </div>

@@ -23,7 +23,7 @@ const ProductCard = ({ product }) => {
       borderRadius: '8px',
       padding: '1rem',
       textAlign: 'center',
-      width: '200px',
+      minWidth: '200px',
       backgroundColor: '#fff',
       boxShadow: '0 2px 6px rgba(0,0,0,0.1)'
     }}>

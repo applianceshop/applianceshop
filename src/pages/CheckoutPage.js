@@ -145,7 +145,7 @@ const CheckoutPage = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div style={{color:'white', padding: '2rem', maxWidth: '600px', margin: '0 auto' }}>
         <h2>Checkout</h2>
         <p>Total: <strong>${total}</strong></p>
@@ -173,12 +173,12 @@ const CheckoutPage = () => {
         {/* Phone Input */}
         <label style={{ display: 'block', margin: '1rem 0 0.5rem' }}>Phone Number:</label>
         <input
-          type="tel"
+          type="number"
           placeholder="Enter your phone number"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           required
-          style={{
+          style={{color:'black',
             width: '100%',
             padding: '0.5rem',
             borderRadius: '4px',
@@ -205,7 +205,7 @@ const CheckoutPage = () => {
   
         {/* Submit Button */}
         <button
-          type='sub'
+          type='submit'
           style={{
             marginTop: '1rem',
             

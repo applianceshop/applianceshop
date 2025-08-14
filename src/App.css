@@ -30,10 +30,18 @@
 
 .Product-container{
   display: flex; 
-margin-bottom: 2rem; 
+margin: 2rem; 
 justify-content: space-between; 
 align-items: center; 
 
+}
+.Product-container-wrap{
+   display: flex; 
+   flex-wrap: wrap;
+margin: 2rem; 
+max-width: 1200px;
+justify-content: space-between; 
+align-items: center; 
 }
  @media screen and (max-width: 691px) {
   .Product-container{
