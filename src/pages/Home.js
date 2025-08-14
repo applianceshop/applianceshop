@@ -19,9 +19,8 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
-      <div  class="bg-card rounded-lg shadow-lg px-6 py-1 border border-customgray mb-6" style={{ margin: '15px' }} >
-        <h1 className='Product-container' style={{color:'white', fontWeight:'bold'}}>Products</h1>
+      <div className="bg-card rounded-lg shadow-lg px-6 py-1 border border-customgray mb-6" style={{ margin: '15px' }} >
+        <h1 className="Product-container" style={{color:'white', fontWeight:'bold'}}>Products</h1>
         {products.length === 0 ? (
           <p>No products available.</p>
         ) : (
