@@ -43,32 +43,33 @@ const AdminDashboard = () => {
     }
   
     try {
-      let imageUrl = '';
+      let imageUrl = editingProduct?.image || ''; // Default to existing image if editing
   
+      // Upload new image only if user selected one
       if (imageFile) {
-        const imageRef = ref(storage, `products/${imageFile.name}`);
+        const imageRef = ref(storage, `products/${Date.now()}_${imageFile.name}`);
         await uploadBytes(imageRef, imageFile);
         imageUrl = await getDownloadURL(imageRef);
       }
   
       if (editingProduct) {
-        // 🟡 Update existing product
+        // 🔄 Update existing product
         const productRef = doc(db, 'products', editingProduct.id);
         await updateDoc(productRef, {
           name,
           category,
           price: parseFloat(price),
-          image: imageUrl || editingProduct.image,
+          image: imageUrl, // will be either new or existing
           stock: parseInt(stock)
         });
         setEditingProduct(null);
       } else {
-        // 🟢 Add new product
+        // 🆕 Add new product
         await addDoc(collection(db, 'products'), {
           name,
           category,
           price: parseFloat(price),
-          image: imageUrl,
+          image: imageUrl || '', // will be empty string if no image uploaded
           stock: parseInt(stock)
         });
       }
