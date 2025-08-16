@@ -1,7 +1,24 @@
 .App {
   text-align: center;
 }
-
+.Item-element{
+   align-content:'flex-end';      
+      border: '1px solid #ddd';
+      border-radius: '8px';
+      padding: '1rem';
+      margin:'1px';
+      text-align: 'center';
+      Width: 'auto';
+      height:'auto';
+      background-color: '#fff';
+      box-shadow: '0 2px 6px rgba(0;0;0;0.1)';
+}
+.Item-img{
+  width: '150px';
+   height: '150px';
+    object-fit: 'cover';
+     border-radius: '4px';
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,20 +52,30 @@ justify-content: space-between;
 align-items: center; 
 
 }
-.Product-container-wrap{
-   display: flex; 
-   flex-wrap: wrap;
+.product-items{
+   display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
 margin: 2rem; 
-max-width: 1200px;
+padding: '50px';
+
 justify-content: space-between; 
 align-items: center; 
 }
+
  @media screen and (max-width: 691px) {
   .Product-container{
   display: 'flex';
   flex-direction: column;
 }
+  .product-items{
+  display: grid;
+  grid-template-columns: 1fr;
+    grid-template-rows: auto;
+
+}
     }
+    
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

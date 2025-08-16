@@ -35,7 +35,7 @@ const CartPreview = () => {
         padding: '1rem',
         border: '1px solid #ccc',
         zIndex: 9999,
-        width: '300px',
+        width: '250px',
         boxShadow: '0 0 15px rgba(0,0,0,0.5)',
         borderRadius: '12px',
         maxHeight: '80vh',
@@ -46,7 +46,7 @@ const CartPreview = () => {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h4 style={{ margin: 0 }}>🛒 Your Cart</h4>
         <button
-          onClick={() => setVisible(false)}
+          onClick={() => {console.log("clicked");setVisible(false)}}
           style={{
             background: 'none',
             border: 'none',
