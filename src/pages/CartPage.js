@@ -7,7 +7,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 const CartPage = () => {
-  const { cart, removeFromCart } = useCart();
+  const { cart, removeItemFromCart,removeFromCart,addToCart } = useCart();
   const navigate = useNavigate();
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -42,13 +42,19 @@ const CartPage = () => {
         ) : (
           <>
             <ul>
-              {cart.map(item => (
+              {cart.map(item => (item.quantity > 0 ?
                 <li key={item.id} style={{ marginBottom: '1rem' }}>
                   <strong>{item.name}</strong> — ${item.price} × {item.quantity}
-                  <button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={() => removeFromCart(item.id)} style={{ marginLeft: '1rem' }}>
-                    Remove
+                  <button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={() => removeItemFromCart(item)} style={{ marginLeft: '1rem' }}>
+                    -
                   </button>
-                </li>
+                  <button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={() => addToCart(item)} style={{ marginLeft: '1rem' }}>
+                    +
+                  </button>
+                  <button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={() => removeFromCart(item.id)} style={{ marginLeft: '1rem' }}>
+                    🗑️
+                  </button>
+                </li>:null
               ))}
             </ul>
             <h3>Total: ${total}</h3>

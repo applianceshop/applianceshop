@@ -73,7 +73,7 @@ const isMobile = useMediaQuery('(max-width: 600px)');
         <button onClick={handleAddToCart} style={{
           alignSelf:'center',
           justifySelf:'self-end',
-          marginTop: '0.5rem',
+          marginTop: 'auto',
           padding: '0.5rem 1rem',
           backgroundColor: '#1f2937',
           color: '#fff',

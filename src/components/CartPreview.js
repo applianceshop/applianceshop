@@ -60,7 +60,7 @@ const CartPreview = () => {
       </div>
 
       <div style={{ marginTop: '1rem' }}>
-        {cart.map(item => (
+        {cart.map(item => (item.quantity > 0 ?
           <div key={item.id} style={{
             display: 'flex',
             gap: '0.5rem',
@@ -82,7 +82,7 @@ const CartPreview = () => {
                 ${item.price} × {item.quantity}
               </div>
             </div>
-          </div>
+          </div>:null
         ))}
 
         <div style={{
