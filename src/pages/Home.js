@@ -11,22 +11,7 @@ const Home = () => {
   const fetchProducts = async () => {
    const categ = await getDocs(collection(db, 'categories'));
    const items = categ.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-   console.log("items"+items.length)
-  //  if(items.length){
-  //  console.log("items"+items.length)
-   
-  //    items.forEach(item => {
-  // console.log("item"+item.category)
-  // if(item.category){
-  //       const option = document.createElement('option');
-  //       option.value = item.category; // Set the value attribute
-  //       option.textContent = item.category; // Set the visible text
-  //       selectElement.appendChild(option); // Add the option to the select
-  //       }
-        
-
-  //   });
-  //   }
+  
   setCategories(items)
     const snapshot = await getDocs(collection(db, 'products'));
     if(sortOrder){
