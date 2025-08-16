@@ -45,13 +45,13 @@ const CartPage = () => {
               {cart.map(item => (item.quantity > 0 ?
                 <li key={item.id} style={{ marginBottom: '1rem' }}>
                   <strong>{item.name}</strong> — ${item.price} × {item.quantity}
-                  <button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={() => removeItemFromCart(item)} style={{ marginLeft: '1rem' }}>
+                  <button title='remove 1 item' className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={() => removeItemFromCart(item)} style={{ marginLeft: '1rem' }}>
                     -
                   </button>
-                  <button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={() => addToCart(item)} style={{ marginLeft: '1rem' }}>
+                  <button title='add 1 item' className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={() => addToCart(item)} style={{ marginLeft: '1rem' }}>
                     +
                   </button>
-                  <button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={() => removeFromCart(item.id)} style={{ marginLeft: '1rem' }}>
+                  <button title='remove all the product' className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={() => removeFromCart(item.id)} style={{ marginLeft: '1rem' }}>
                     🗑️
                   </button>
                 </li>:null

@@ -144,10 +144,14 @@ const AdminDashboard = () => {
         value={newProduct.price}
         onChange={e => setNewProduct({ ...newProduct, price: e.target.value })}
       />
-      <input
-        type="file"
+      <div>
+      <label className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" for="files" style={{color:'white'}} >{newProduct.imageFile ? newProduct.imageFile.name : 'Add Image'}</label>
+      <input  id="files" style={{display:"none"}}
+     
+        type="file" 
         onChange={e => setNewProduct({ ...newProduct, imageFile: e.target.files[0] })}
       />
+      </div>
       <input className="p-1 rounded w-80 text-sm text-gray-300 bg-panel focus:outline-none"
         type="number"
         placeholder="Stock"
@@ -170,7 +174,15 @@ const AdminDashboard = () => {
             />
             <strong>{product.name}</strong> — ${product.price} ({product.category}) — Stock: {product.stock}
             <button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none"
-              onClick={() => handleDelete(product.id)}
+              onClick={() => {
+                if (window.confirm(" you are abou to delte the product")) {
+        // Perform the action
+      handleDelete(product.id)
+      } else {
+        // User cancelled
+        console.log("delete cancelled.");
+      }
+                }}
               style={{ marginLeft: '1rem' }}
             >
               Delete
