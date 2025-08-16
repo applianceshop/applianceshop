@@ -13,11 +13,13 @@ const CheckoutPage = () => {
   const { cart, clearCart } = useCart();
   const [phone, setPhone] = useState('');
   const navigate = useNavigate();
+  const [disableSubmit,setDisableSubmit]=useState(false);
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   const handleOrder = async (event) => {
     event.preventDefault()
+    setDisableSubmit(true)
     if (!address.trim()) {
       alert('Please enter a delivery address.');
       return;
@@ -205,7 +207,7 @@ const CheckoutPage = () => {
   
         {/* Submit Button */}
         <button
-          type='submit'
+          type='submit' disabled={disableSubmit} 
           style={{
             marginTop: '1rem',
             
