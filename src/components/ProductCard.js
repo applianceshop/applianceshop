@@ -1,9 +1,21 @@
-import React from 'react';
+ import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 
 const ProductCard = ({ product }) => {
-  const { cart, addToCart } = useCart();
+  const useMediaQuery = (query) => {
+      const mediaMatch = window.matchMedia(query);
+      const [matches, setMatches] = useState(mediaMatch.matches);
 
+      useEffect(() => {
+        const handler = (e) => setMatches(e.matches);
+        mediaMatch.addListener(handler);
+        return () => mediaMatch.removeListener(handler);
+      }, [mediaMatch]);
+
+      return matches;
+    };
+  const { cart, addToCart } = useCart();
+const isMobile = useMediaQuery('(max-width: 600px)');
   const outOfStock = product.stock === 0;
 
   const cartItem = cart.find(item => item.id === product.id);
@@ -19,11 +31,17 @@ const ProductCard = ({ product }) => {
 
   return (
     <div style={{
+      display:'flex',
+      flexDirection:'column',
+      placeItems:'center',
+      alignItems:'center',
       border: '1px solid #ddd',
       borderRadius: '8px',
-      padding: '1rem',
+      padding: '5px',
+      margin: '5px',
       textAlign: 'center',
-      minWidth: '200px',
+      width: 'auto',
+      height:'300px',
       backgroundColor: '#fff',
       boxShadow: '0 2px 6px rgba(0,0,0,0.1)'
     }}>
@@ -31,7 +49,7 @@ const ProductCard = ({ product }) => {
         <img
           src={product.image}
           alt={product.name}
-          style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '4px' }}
+          style={{ width: '150px', height: '150px', objectFit: 'cover', borderRadius: '4px' }}
         />
       )}
       <h3 style={{ margin: '0.5rem 0' }}>{product.name}</h3>
@@ -53,7 +71,9 @@ const ProductCard = ({ product }) => {
         </button>
       ) : (
         <button onClick={handleAddToCart} style={{
-          marginTop: '0.5rem',
+          alignSelf:'center',
+          justifySelf:'self-end',
+          marginTop: 'auto',
           padding: '0.5rem 1rem',
           backgroundColor: '#1f2937',
           color: '#fff',

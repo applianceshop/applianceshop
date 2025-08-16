@@ -37,8 +37,8 @@ const AdminDashboard = () => {
   const handleAddProduct = async () => {
     const { name, category, price, imageFile, stock } = newProduct;
   
-    if (!name || !category || !price || !stock) {
-      alert('Please fill all fields.');
+    if (!name || !category || !price || !stock ||!imageFile) {
+      alert('Please fill all fields and the image.');
       return;
     }
   
@@ -116,7 +116,7 @@ const AdminDashboard = () => {
     </button>
 
     <div style={{ padding: '2rem',color:'white' }}>
-      <h2><b>Admin Dashboard</b></h2>
+      <h2 style={{marginBottom:'10px'}}><b>Admin Dashboard</b></h2>
 
       <Link to="/admin/orders">
         <button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" style={{ marginBottom: '1rem', padding: '0.5rem 1rem' }}>
@@ -144,10 +144,14 @@ const AdminDashboard = () => {
         value={newProduct.price}
         onChange={e => setNewProduct({ ...newProduct, price: e.target.value })}
       />
-      <input
-        type="file"
+      <div>
+      <label className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" for="files" style={{color:'white'}} >{newProduct.imageFile ? newProduct.imageFile.name : 'Add Image'}</label>
+      <input  id="files" style={{display:"none"}}
+     
+        type="file" 
         onChange={e => setNewProduct({ ...newProduct, imageFile: e.target.files[0] })}
       />
+      </div>
       <input className="p-1 rounded w-80 text-sm text-gray-300 bg-panel focus:outline-none"
         type="number"
         placeholder="Stock"
@@ -162,7 +166,9 @@ const AdminDashboard = () => {
       <h3 style={{ marginTop: '2rem' }}>Existing Products</h3>
       <ul>
         {products.map(product => (
+         
           <li key={product.id}>
+             <div style={{display:'flex',flexDirection:'row', margin:'5px'}}>
             <img
               src={product.image}
               alt={product.name}
@@ -170,7 +176,15 @@ const AdminDashboard = () => {
             />
             <strong>{product.name}</strong> — ${product.price} ({product.category}) — Stock: {product.stock}
             <button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none"
-              onClick={() => handleDelete(product.id)}
+              onClick={() => {
+                if (window.confirm(" you are abou to delete the product")) {
+        // Perform the action
+      handleDelete(product.id)
+      } else {
+        // User cancelled
+        console.log("delete cancelled.");
+      }
+                }}
               style={{ marginLeft: '1rem' }}
             >
               Delete
@@ -178,7 +192,9 @@ const AdminDashboard = () => {
 			<button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={() => handleEdit(product)} style={{ marginLeft: '0.5rem' }}>
               Edit
             </button>
+            </div>
           </li>
+        
         ))}
       </ul>
     </div>
