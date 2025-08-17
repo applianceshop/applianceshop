@@ -80,7 +80,6 @@ const Navbar = () => {
           ) : (
             <Link to="/login" style={navButtonStyle}>Login</Link>
           )}
-          <Link to="/track-order" style={navButtonStyle}>Track Order</Link>
         </div>
         </div>
       </div>
