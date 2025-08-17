@@ -29,6 +29,14 @@ const Navbar = () => {
       }
     };
    const navigate = useNavigate();
+   const [searchQuery, setSearchQuery] = useState('');
+   const handleSearch = (e) => {
+      e.preventDefault();
+      if (searchQuery.trim()) {
+        navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+        setSearchQuery('');
+      }
+    };
    const useMediaQuery = (query) => {
         const mediaMatch = window.matchMedia(query);
         const [matches, setMatches] = useState(mediaMatch.matches);
@@ -56,7 +64,17 @@ const Navbar = () => {
       {/* Right: Links + Live Cart Preview */}
       <div style={!isMobile ? { display: 'flex', flexDirection: 'column', alignItems: 'flex-end', width: '250px' }:{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '250px', marginTop:'5px '}}>
         <div style={{ marginBottom: '8px' }}>
-          <Link
+          <form onSubmit={handleSearch} style={{ display: 'flex', gap: '0.5rem', marginBottom: '8px' }}>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search products..."
+              style={{ padding: '0.4rem', borderRadius: '4px', border: '1px solid #ccc' }}
+            />
+            <button type="submit" style={navButtonStyle}>Search</button>
+          </form>
+		  <Link
             className="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 my-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none"
             to="/"
           >
