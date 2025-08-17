@@ -24,14 +24,14 @@ const TrackOrderPage = () => {
 
   return (
     <div style={{ padding: '2rem' }}>
-      <h2>Track Your Order</h2>
+      <h2 style={{color : "white"}}>Track Your Order</h2>
       <input
         type="text"
         value={orderId}
         onChange={e => setOrderId(e.target.value)}
         placeholder="Enter Order ID"
       />
-      <button onClick={handleSearch}>Check Status</button>
+      <button className="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={handleSearch}>Check Status</button>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
