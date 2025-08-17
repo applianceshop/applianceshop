@@ -75,6 +75,11 @@ const Navbar = () => {
           {user ? (
             <>
               <Link to="/my-orders" style={navButtonStyle}>My Orders</Link>
+              <Link to="/profile">
+                <button className="nav-button" style={navButtonStyle}>
+                  Profile
+                </button>
+              </Link>
               <button onClick={handleLogout} style={navButtonStyle}>Logout</button>
             </>
           ) : (

@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { useCart } from '../context/CartContext';
 import { db } from '../firebase/config';
-import { collection, addDoc, serverTimestamp, doc, updateDoc, getDoc } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp, doc, updateDoc, getDoc, setDoc } from 'firebase/firestore';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import { useEffect } from 'react';
 
 const CheckoutPage = () => {
   const [number, setNumber] = useState('');
@@ -15,6 +16,23 @@ const CheckoutPage = () => {
   const [phone, setPhone] = useState('');
   const navigate = useNavigate();
   const { user } = useAuth();
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      if (!user) return;
+  
+      const userRef = doc(db, 'users', user.uid);
+      const userSnap = await getDoc(userRef);
+  
+      if (userSnap.exists()) {
+        const data = userSnap.data();
+        setName(data.name || '');
+        setAddress(data.address || '');
+        setPhone(data.phone || '');
+      }
+    };
+  
+    fetchUserProfile();
+  }, [user]);
   const [disableSubmit,setDisableSubmit]=useState(false);
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -71,10 +89,10 @@ const CheckoutPage = () => {
     try {
       // ✅ Create the order
       await addDoc(collection(db, 'orders'), {
-		userId: user?.uid || null,
+        userId: user?.uid || null,
         name,
         address,
-		phone,
+        phone,
         items: cart.map(item => ({
           productId: item.id,
           name: item.name,
@@ -83,9 +101,19 @@ const CheckoutPage = () => {
         })),
         total,
         status: 'pending',
-		orderId,
+        orderId,
         timestamp: serverTimestamp()
       });
+
+      // ✅ Save user profile if logged in
+      if (user?.uid) {
+        const userRef = doc(db, 'users', user.uid);
+        await setDoc(userRef, {
+          name,
+          phone,
+          address
+        }, { merge: true }); // merge to avoid overwriting other fields
+      }
 	  await sendTelegramMessage({ name, phone, address, items: cart, total });
 
       // ✅ Deduct stock after order placement
