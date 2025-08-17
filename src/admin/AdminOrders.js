@@ -65,11 +65,15 @@ const AdminOrders = () => {
           <div>
             <strong>Items:</strong>
             <ul>
-              {order.items.map((item, idx) => (
-                <li key={idx}>
-                  {item.name} x {item.quantity} (${item.price})
-                </li>
-              ))}
+              {Array.isArray(order.items) ? (
+                order.items.map((item, idx) => (
+                  <li key={idx}>
+                    {item.name} x {item.quantity} (${item.price})
+                  </li>
+                ))
+              ) : (
+                <li>No items found</li>
+              )}
             </ul>
           </div>
 
