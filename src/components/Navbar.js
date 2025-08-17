@@ -23,7 +23,7 @@ const Navbar = () => {
    const [isOpen, setIsOpen] = useState(false);
 const { user } = useAuth();
   const links = user ? [
-    { name: "Home", href: "" },
+    { name: "Home", href: "/" },
     { name: "Cart", href: "cart" },
     { name: "Track order", href: "track-order" },
     { name: "Profile", href: "profile" },
