@@ -231,7 +231,7 @@ const AdminDashboard = () => {
             <strong>{product.name}</strong> — ${product.price} ({product.category}) — Stock: {product.stock}
             <button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none"
               onClick={() => {
-                if (window.confirm(" you are abou to delete the product")) {
+                if (window.confirm(" you are about to delete this product")) {
         // Perform the action
       handleDelete(product.id)
       } else {
