@@ -29,9 +29,9 @@ const { user } = useAuth();
     { name: "Profile", href: "profile" },
 { name: "My orders", href: "my-orders" },
     
-  ]:[{ name: "Home", href: "" },
+  ]:[{ name: "Home", href: "/" },
     { name: "Cart", href: "cart" },
-    {  },
+    { name: "Track order", href: "track-order" },
     
 ];
 
