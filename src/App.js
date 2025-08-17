@@ -12,6 +12,7 @@ import OrderConfirmationPage from './pages/OrderConfirmationPage';
 import TrackOrderPage from './pages/TrackOrderPage';
 import { AuthProvider } from './context/AuthContext';
 import MyOrders from './pages/MyOrders';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/order-confirmation/:orderId" element={<OrderConfirmationPage />} />
           <Route path="/track-order" element={<TrackOrderPage />} />
           <Route path="/login" element={<LoginPage />} />
+		  <Route path="/profile" element={<ProfilePage />} />
 		  <Route path="/my-orders" element={<MyOrders />} />
 
           {/* Protected admin routes */}
