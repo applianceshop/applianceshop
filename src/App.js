@@ -13,6 +13,7 @@ import TrackOrderPage from './pages/TrackOrderPage';
 import { AuthProvider } from './context/AuthContext';
 import MyOrders from './pages/MyOrders';
 import ProfilePage from './pages/ProfilePage';
+import SearchResultsPage from './pages/SearchResultsPage';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/track-order" element={<TrackOrderPage />} />
           <Route path="/login" element={<LoginPage />} />
 		  <Route path="/profile" element={<ProfilePage />} />
+		  <Route path="/search" element={<SearchResultsPage />} />
 		  <Route path="/my-orders" element={<MyOrders />} />
 
           {/* Protected admin routes */}
