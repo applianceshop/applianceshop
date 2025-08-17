@@ -7,7 +7,7 @@ import { collection, addDoc, serverTimestamp, doc, updateDoc, getDoc } from 'fir
 import axios from 'axios';
 
 const CheckoutPage = () => {
-   const [number, setNumber] = useState('');
+  const [number, setNumber] = useState('');
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const { cart, clearCart } = useCart();
@@ -16,7 +16,14 @@ const CheckoutPage = () => {
   const [disableSubmit,setDisableSubmit]=useState(false);
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-
+    const generateOrderId = () => {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = 'ORD-';
+    for (let i = 0; i < 6; i++) {
+      result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+  };
   const handleOrder = async (event) => {
     event.preventDefault()
     setDisableSubmit(true)
@@ -26,6 +33,7 @@ const CheckoutPage = () => {
     }
 
     // Simulate placing order
+	const orderId = generateOrderId();
     await addDoc(collection(db, 'orders'), {
       name,
       address,
@@ -38,6 +46,7 @@ const CheckoutPage = () => {
       })),
       total,
       status: 'pending',
+	  orderId,
       timestamp: serverTimestamp()
     });
     // ✅ Deduct stock from each product
@@ -87,7 +96,7 @@ const CheckoutPage = () => {
 
       alert('Order placed successfully!');
       clearCart();
-      navigate('/');
+      navigate(`/order-confirmation/${orderId}`);
     } catch (error) {
       console.error('Order placement failed:', error);
       alert('Something went wrong while placing the order.');
