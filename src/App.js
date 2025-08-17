@@ -10,31 +10,38 @@ import Navbar from './components/Navbar';
 import CartPreview from './components/CartPreview';
 import OrderConfirmationPage from './pages/OrderConfirmationPage';
 import TrackOrderPage from './pages/TrackOrderPage';
+import { AuthProvider } from './context/AuthContext';
+import MyOrders from './pages/MyOrders';
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <CartPreview /> {/* <-- floating cart preview */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/admin" element={
-          <RequireAuth>
-            <AdminDashboard />
-          </RequireAuth>
-        } />
-        <Route path="/login" element={<LoginPage />} />
-		<Route path="/order-confirmation/:orderId" element={<OrderConfirmationPage />} />
-		<Route path="/track-order" element={<TrackOrderPage />} />
-        <Route path="/admin/orders" element={
-          <RequireAuth>
-            <AdminOrders />
-          </RequireAuth>
-        } />
-      </Routes>
-    </>
+    <AuthProvider>
+      <>
+        <Navbar />
+        <CartPreview />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/order-confirmation/:orderId" element={<OrderConfirmationPage />} />
+          <Route path="/track-order" element={<TrackOrderPage />} />
+          <Route path="/login" element={<LoginPage />} />
+		  <Route path="/my-orders" element={<MyOrders />} />
+
+          {/* Protected admin routes */}
+          <Route path="/admin" element={
+            <RequireAuth>
+              <AdminDashboard />
+            </RequireAuth>
+          } />
+          <Route path="/admin/orders" element={
+            <RequireAuth>
+              <AdminOrders />
+            </RequireAuth>
+          } />
+        </Routes>
+      </>
+    </AuthProvider>
   );
 }
 

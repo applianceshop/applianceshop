@@ -1,12 +1,34 @@
 // src/components/Navbar.js
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../App.css';
 import BAYTAKLOGO from '../images/Baytak logo.png';
 import CartPreview from './CartPreview';
+import { useAuth } from '../context/AuthContext';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase/config';
 
-
+const navButtonStyle = {
+  padding: '6px 12px',
+  backgroundColor: '#1f2937',
+  color: 'white',
+  borderRadius: '4px',
+  border: '1px solid #ccc',
+  margin: '0 6px',
+  textDecoration: 'none',
+  fontSize: '14px'
+};
 const Navbar = () => {
+	const { user } = useAuth();
+	const handleLogout = async () => {
+      try {
+        await signOut(auth);
+        navigate('/');  // 👈 Redirect to home page
+      } catch (err) {
+        console.error('Logout error:', err.message);
+      }
+    };
+   const navigate = useNavigate();
    const useMediaQuery = (query) => {
         const mediaMatch = window.matchMedia(query);
         const [matches, setMatches] = useState(mediaMatch.matches);
@@ -46,11 +68,21 @@ const Navbar = () => {
           >
             Cart
           </Link>
-		  <Link to="/track-order" style={{ marginLeft: '1rem', color: 'white' }}>
+		  <Link to="/track-order" style={{ ...navButtonStyle, whiteSpace: 'nowrap' }}>
             Track Order
           </Link>
+          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '0.5rem', marginTop: '0.5rem', flexWrap: 'wrap' }}>
+          {user ? (
+            <>
+              <Link to="/my-orders" style={navButtonStyle}>My Orders</Link>
+              <button onClick={handleLogout} style={navButtonStyle}>Logout</button>
+            </>
+          ) : (
+            <Link to="/login" style={navButtonStyle}>Login</Link>
+          )}
+          <Link to="/track-order" style={navButtonStyle}>Track Order</Link>
         </div>
-        {/* <CartPreview /> */}
+        </div>
       </div>
     </div>
   );
