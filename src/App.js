@@ -7,7 +7,9 @@ import LoginPage from './pages/LoginPage';
 import RequireAuth from './auth/RequireAuth';
 import AdminOrders from './admin/AdminOrders';
 import Navbar from './components/Navbar';
-import CartPreview from './components/CartPreview'; // <-- add this
+import CartPreview from './components/CartPreview';
+import OrderConfirmationPage from './pages/OrderConfirmationPage';
+import TrackOrderPage from './pages/TrackOrderPage';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           </RequireAuth>
         } />
         <Route path="/login" element={<LoginPage />} />
+		<Route path="/order-confirmation/:orderId" element={<OrderConfirmationPage />} />
+		<Route path="/track-order" element={<TrackOrderPage />} />
         <Route path="/admin/orders" element={
           <RequireAuth>
             <AdminOrders />
