@@ -5,6 +5,7 @@ import { useCart } from '../context/CartContext';
 import { db } from '../firebase/config';
 import { collection, addDoc, serverTimestamp, doc, updateDoc, getDoc } from 'firebase/firestore';
 import axios from 'axios';
+import { useAuth } from '../context/AuthContext';
 
 const CheckoutPage = () => {
   const [number, setNumber] = useState('');
@@ -13,6 +14,7 @@ const CheckoutPage = () => {
   const { cart, clearCart } = useCart();
   const [phone, setPhone] = useState('');
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [disableSubmit,setDisableSubmit]=useState(false);
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -69,6 +71,7 @@ const CheckoutPage = () => {
     try {
       // ✅ Create the order
       await addDoc(collection(db, 'orders'), {
+		userId: user?.uid || null,
         name,
         address,
 		phone,
@@ -80,6 +83,7 @@ const CheckoutPage = () => {
         })),
         total,
         status: 'pending',
+		orderId,
         timestamp: serverTimestamp()
       });
 	  await sendTelegramMessage({ name, phone, address, items: cart, total });
