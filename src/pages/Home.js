@@ -76,7 +76,7 @@ const useMediaQuery = (query) => {
           setSortOrder(e.target.value)}}
         style={{  marginBottom: '1rem', borderRadius:'8px',width:'200px',border: '1px solid #ccc',marginBottom: '8px',marginRight:'4px' }}
       >
-        <option key={0} value=""></option>
+        <option key={0} value="">All</option>
         {categories.length === 0 ? (<p>loading...</p>) : categories.map(category => (
           <option value={category.category}>{category.category}</option>
           ))}

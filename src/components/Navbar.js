@@ -24,13 +24,13 @@ const Navbar = () => {
    const [isOpen, setIsOpen] = useState(false);
 const { user } = useAuth();
   const links = user ? [
-    
+    { name: "Home", href: "/" },
     { name: "Cart", href: "cart" },
     { name: "Track order", href: "track-order" },
     { name: "Profile", href: "profile" },
 { name: "My orders", href: "my-orders" },
     
-  ]:[
+  ]:[{ name: "Home", href: "/" },
     { name: "Cart", href: "cart" },
     { name: "Track order", href: "track-order" },
     
@@ -169,16 +169,16 @@ const { user } = useAuth();
     </nav>
     <div
       style={{
-        width: '100vw',
+        width: 'auto',
         marginTop: '100px',
         backgroundImage: `url(${cover})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        padding: '2rem 1rem',
+        // padding: '2rem 1rem',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         flexWrap: 'wrap',
         boxSizing: 'border-box',
         overflow: 'hidden'
@@ -186,16 +186,13 @@ const { user } = useAuth();
     >
 
        
-                <div style={{width:'200px'}} class="flex items-center gap-4">
-                    {/* <p class="text-3xl font-bold text-white">BAYTAK PLAST & DETERGENTS</p> */}
-                    {/* <span class="text-gray-300">{getCurrentDate('/')}</span> */}
-                </div>
+               
                 <div 
                   className="flex items-center justify-center" 
                   style={{
-                    width: '300px',
+                    width: 'auto',
                     height: '200px',
-                    backgroundImage: `url(${cover})`, // ✅ cover image as background
+                    // backgroundImage: `url(${cover})`, // ✅ cover image as background
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     borderRadius: '8px'
@@ -206,8 +203,8 @@ const { user } = useAuth();
                       src={BAYTAKLOGO} 
                       alt="Logo" 
                       style={{
-                        width: '150px',
-                        height: '150px',
+                        width: '200px',
+                        height: 'auto',
                         objectFit: 'contain',
                         backgroundColor: 'rgba(255, 255, 255, 0.8)',
                         padding: '10px',
@@ -221,47 +218,6 @@ const { user } = useAuth();
 
       {/* Right: Links + Live Cart Preview */}
       
-      <div style={!isMobile ? { display: 'flex', flexDirection: 'column', alignItems: 'flex-end', width: '250px' }:{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '250px', marginTop:'5px '}}>
-        <div style={{ marginBottom: '8px' }}>
-          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '0.5rem', marginTop: '0.5rem', flexWrap: 'wrap' }}>
-          
-
-      {/* {user ? (
-            <>
-             
-              <button className="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 my-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" onClick={handleLogout} style={navButtonStyle}>Logout</button>
-          <div>
-           <Link className="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 my-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" to="/my-orders" style={navButtonStyle}>My Orders</Link>
-              <Link  to="/profile">
-                <button className="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 my-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none"  style={navButtonStyle}>
-                  Profile
-                </button>
-              </Link> 
-              </div>
-            </>
-          ) : (
-            <Link className="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 my-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" to="/login" style={navButtonStyle}>Login</Link>
-          )} */}
-                  </div>
-		  {/* <Link
-            className="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 my-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none"
-            to="/"
-          >
-            Home
-          </Link>
-          <Link
-            className="text-sm font-medium text-button hover:text-white px-3 py-1 mx-1 my-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none"
-            to="/cart"
-          >
-            Cart
-          </Link>
-		  <Link className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none" to="/track-order" style={{ ...navButtonStyle, whiteSpace: 'nowrap' }}>
-            Track Order
-          </Link> */}
-         
-          
-        </div>
-      </div>
     
     </div>
     </>
