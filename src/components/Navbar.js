@@ -23,13 +23,13 @@ const Navbar = () => {
    const [isOpen, setIsOpen] = useState(false);
 const { user } = useAuth();
   const links = user ? [
-    { name: "Home", href: "/" },
+    
     { name: "Cart", href: "cart" },
     { name: "Track order", href: "track-order" },
     { name: "Profile", href: "profile" },
 { name: "My orders", href: "my-orders" },
     
-  ]:[{ name: "Home", href: "/" },
+  ]:[
     { name: "Cart", href: "cart" },
     { name: "Track order", href: "track-order" },
     
@@ -76,9 +76,11 @@ const { user } = useAuth();
       const isMobile = useMediaQuery('(max-width: 600px)');
   return (
     <>
-    <nav className="bg-white shadow-md fixed w-full px-5 z-0" style={{position:"absolute",top:'0'}}>
+    
+    <nav className="bg-white shadow-md fixed w-full px-2 z-0" style={{position:"absolute",top:'0'}}>
       <div >
         <div className="flex justify-between h-16 items-center">
+          
           {/* Logo */}
           {/* <div className="text-2xl font-bold text-gray-800">Baytak plast & Detergents</div> */}
           
@@ -98,7 +100,7 @@ const { user } = useAuth();
 
           {/* Mobile Button with Animated Icon */}
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="relative w-8 h-8 flex items-center justify-center">
+            <button onClick={() => setIsOpen(!isOpen)} className="relative w-8 h-8 flex items-center justify-start">
               <motion.span
                 className="absolute w-6 h-0.5 bg-gray-800"
                 animate={isOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -6 }}
@@ -116,8 +118,24 @@ const { user } = useAuth();
               />
             </button>
           </div>
-          <div> {user ? <button  onClick={handleLogout} style={navButtonStyle}>Logout</button> :  <Link  to="/login" style={navButtonStyle}>Login</Link>}</div>
+              <form onSubmit={handleSearch} style={isMobile?{display: 'flex',flexDirection:'row'}:{ display: 'flex',flexDirection:'row'}}>
+        
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search products..."
+              style={{ padding:'4px', borderRadius: '4px', border: '1px solid #ccc' }}
+            />
+            <button type="submit" style={navButtonStyle}>Search</button>
+            
+          </form>
+          <div style={isMobile?{display: 'flex',flexDirection:'column'}:{ display: 'flex',flexDirection:'row'}}> 
+          
+          {user ? <button type='button'  onClick={handleLogout} style={navButtonStyle}>Logout</button> :  <Link  to="/login" style={navButtonStyle}>Login</Link>}</div>
+         
         </div>
+        
       </div>
 
       {/* Mobile Menu with Animation */}
@@ -143,6 +161,7 @@ const { user } = useAuth();
                 {link.name}
               </motion.a>
             ))}
+          
           </motion.div>
         )}
       </AnimatePresence>
@@ -150,11 +169,12 @@ const { user } = useAuth();
     <div className="Product-container" style={{marginTop:'100px'}} >
        
                 <div style={{width:'200px'}} class="flex items-center gap-4">
-                    <p class="text-3xl font-bold text-white">BAYTAK PLAST & DETERGENTS</p>
+                    {/* <p class="text-3xl font-bold text-white">BAYTAK PLAST & DETERGENTS</p> */}
                     {/* <span class="text-gray-300">{getCurrentDate('/')}</span> */}
                 </div>
-                <div class="flex items-center gap-3" style={{width:'200px',height:'200px'}}>
+                <div class="flex items-center gap-3" style={{width:'200px',height:'200px'}}><Link to="/">
                     <img  style={{width:'200px',height:'200px', borderRadius: '8px'}} src={BAYTAKLOGO} alt="Logo"  />
+                    </Link>
                 </div>
                
 

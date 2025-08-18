@@ -68,7 +68,7 @@ const useMediaQuery = (query) => {
       <div className="bg-card rounded-lg shadow-lg px-6 py-1 border border-customgray mb-6"  >
         <h1 className="Product-container" style={{color:'white', fontWeight:'bold'}}>Products</h1>
         {/* Dropdown */}
-        <div style={isMobile?{display:'flex',flexDirection:'column'}:{display:"flex"}}>
+        <div style={isMobile?{display:'flex',flexDirection:'column',marginLeft:'2rem'}:{display:"flex",marginLeft:'2rem'}}>
       <label style={{ marginRight: '0.5rem',color:'white' }}>Sort by category:</label>
       <select id="catergory"
         value={sortOrder}
@@ -85,7 +85,7 @@ const useMediaQuery = (query) => {
           {/* <option key={1} value="cleaning">cleaning</option>
           <option key={2} value="test">test</option> */}
       </select>
-       <form onSubmit={handleSearch} style={isMobile?{display: 'flex',flexDirection:'column', gap: '0.5rem', marginBottom: '8px'}:{ display: 'flex', gap: '0.5rem', marginBottom: '8px' }}>
+       {/* <form onSubmit={handleSearch} style={isMobile?{display: 'flex',flexDirection:'column', gap: '0.5rem', marginBottom: '8px'}:{ display: 'flex', gap: '0.5rem', marginBottom: '8px' }}>
         <label style={{ marginRight: '0.5rem',color:'white' }}>Search by item name:</label>
             <input
               type="text"
@@ -95,7 +95,7 @@ const useMediaQuery = (query) => {
               style={{  borderRadius: '4px', border: '1px solid #ccc' }}
             />
             <button type="submit" style={navButtonStyle}>Search</button>
-          </form>
+          </form> */}
           </div>
         {products.length === 0 ? (
           <p style={{color:'white'}}>No products available.</p>
