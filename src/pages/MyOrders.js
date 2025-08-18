@@ -54,7 +54,6 @@ const MyOrders = () => {
             {order.items.map((item, idx) => (
               <li key={idx}>{item.name} x{item.stock || item.quantity || 1}</li> 
             ))}
-            ))}
           </ul>
 		  <button
             onClick={() => handleReorder(order)}
