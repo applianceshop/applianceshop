@@ -63,7 +63,7 @@ justify-content: space-between;
 align-items: center; 
 }
 
- @media screen and (max-width: 691px) {
+ @media screen and (max-width: 600px) {
   .Product-container{
   display: 'flex';
   flex-direction: column;

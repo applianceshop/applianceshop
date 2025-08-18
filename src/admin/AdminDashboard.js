@@ -109,10 +109,23 @@ const AdminDashboard = () => {
     });
     setEditingProduct(product);
   };
+  const useMediaQuery = (query) => {
+          const mediaMatch = window.matchMedia(query);
+          const [matches, setMatches] = useState(mediaMatch.matches);
+    
+          useEffect(() => {
+            const handler = (e) => setMatches(e.matches);
+            mediaMatch.addListener(handler);
+            return () => mediaMatch.removeListener(handler);
+          }, [mediaMatch]);
+    
+          return matches;
+        };
+        const isMobile = useMediaQuery('(max-width: 600px)');
   return (
   <>
     {/* <Navbar /> */}
-    <button
+    {/* <button
       onClick={() => signOut(auth)}
       style={{color:'white',
         position: 'absolute',
@@ -127,7 +140,7 @@ const AdminDashboard = () => {
       }}
     >
       Logout
-    </button>
+    </button> */}
 
     <div style={{ padding: '2rem',color:'white' }}>
       <h2 style={{marginBottom:'10px'}}><b>Admin Dashboard</b></h2>
@@ -161,7 +174,7 @@ const AdminDashboard = () => {
         </button>
         </div>: null}
 <div className="bg-card rounded-lg shadow-lg px-6 py-1 border border-customgray mb-6">
-              <div className="flex justify-between items-center space-x-4 py-4">
+              <div className="flex justify-between items-center space-x-4 py-4" style={isMobile?{flexDirection:'column'}:{flexDirection:'row'}}>
       <h3>Add New Product</h3>
       <label>Name</label>
       <input className="p-1 rounded w-80 text-sm text-gray-300 bg-panel focus:outline-none"

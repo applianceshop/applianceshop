@@ -25,7 +25,9 @@ const MyOrders = () => {
       <h2>Your Orders</h2>
       {orders.map(order => (
         <div key={order.id} style={{ borderBottom: '1px solid #444', marginBottom: '1rem' }}>
+          <p><strong>Order ID:</strong> {order.orderId}</p>
 		  <p>Placed On: {order.timestamp?.toDate().toLocaleString()}</p>
+      
           <p><strong>Status:</strong> {order.status}</p>
           <p><strong>Total:</strong> ${order.total}</p>
           <ul>
