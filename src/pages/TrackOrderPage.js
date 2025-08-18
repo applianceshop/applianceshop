@@ -23,9 +23,9 @@ const TrackOrderPage = () => {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
+    <div style={{ padding: '2rem',color : "white" }}>
       <h2 style={{color : "white"}}>Track Your Order</h2>
-      <input
+      <input style={{color:'black'}}
         type="text"
         value={orderId}
         onChange={e => setOrderId(e.target.value)}

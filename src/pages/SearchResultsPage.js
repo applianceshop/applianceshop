@@ -30,7 +30,7 @@ const SearchResultsPage = () => {
         <p>No products found.</p>
       ) : (
         <div
-          style={{
+          style={{ color:'black',
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
             gap: '1.5rem',
