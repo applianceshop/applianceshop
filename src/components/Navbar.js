@@ -8,6 +8,7 @@ import { useAuth } from '../context/AuthContext';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase/config';
 import { motion, AnimatePresence } from "framer-motion";
+import cover from '../images/header.jpg';
 
 const navButtonStyle = {
   padding: '6px 12px',
@@ -166,16 +167,56 @@ const { user } = useAuth();
         )}
       </AnimatePresence>
     </nav>
-    <div className="Product-container" style={{marginTop:'100px'}} >
+    <div
+      style={{
+        width: '100vw',
+        marginTop: '100px',
+        backgroundImage: `url(${cover})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        padding: '2rem 1rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        boxSizing: 'border-box',
+        overflow: 'hidden'
+      }}
+    >
+
        
                 <div style={{width:'200px'}} class="flex items-center gap-4">
                     {/* <p class="text-3xl font-bold text-white">BAYTAK PLAST & DETERGENTS</p> */}
                     {/* <span class="text-gray-300">{getCurrentDate('/')}</span> */}
                 </div>
-                <div class="flex items-center gap-3" style={{width:'200px',height:'200px'}}><Link to="/">
-                    <img  style={{width:'200px',height:'200px', borderRadius: '8px'}} src={BAYTAKLOGO} alt="Logo"  />
-                    </Link>
+                <div 
+                  className="flex items-center justify-center" 
+                  style={{
+                    width: '300px',
+                    height: '200px',
+                    backgroundImage: `url(${cover})`, // ✅ cover image as background
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    borderRadius: '8px'
+                  }}
+                >
+                  <Link to="/">
+                    <img 
+                      src={BAYTAKLOGO} 
+                      alt="Logo" 
+                      style={{
+                        width: '150px',
+                        height: '150px',
+                        objectFit: 'contain',
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        padding: '10px',
+                        borderRadius: '8px'
+                      }} 
+                    />
+                  </Link>
                 </div>
+
                
 
       {/* Right: Links + Live Cart Preview */}
