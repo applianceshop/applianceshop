@@ -7,6 +7,7 @@ export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [cartFlash, setCartFlash] = useState(false);
 
   const addToCart = (product) => {
     setCart(prev => {
@@ -38,7 +39,7 @@ export const CartProvider = ({ children }) => {
   const clearCart = () => setCart([]);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart,removeItemFromCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart,removeItemFromCart,cartFlash,setCartFlash }}>
       {children}
     </CartContext.Provider>
   );
