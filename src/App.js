@@ -14,6 +14,7 @@ import { AuthProvider } from './context/AuthContext';
 import MyOrders from './pages/MyOrders';
 import ProfilePage from './pages/ProfilePage';
 import SearchResultsPage from './pages/SearchResultsPage';
+import RequireAdmin from './auth/RequireAdmin';
 
 function App() {
   return (
@@ -33,16 +34,22 @@ function App() {
 		  <Route path="/my-orders" element={<MyOrders />} />
 
           {/* Protected admin routes */}
-          <Route path="/admin" element={
-            <RequireAuth>
-              <AdminDashboard />
-            </RequireAuth>
-          } />
-          <Route path="/admin/orders" element={
-            <RequireAuth>
-              <AdminOrders />
-            </RequireAuth>
-          } />
+          <Route
+            path="/admin"
+            element={
+              <RequireAdmin>
+                <AdminDashboard />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="/admin/orders"
+            element={
+              <RequireAdmin>
+                <AdminOrders />
+              </RequireAdmin>
+            }
+          />
         </Routes>
       </>
     </AuthProvider>

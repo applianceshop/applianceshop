@@ -58,22 +58,22 @@ const CartPage = () => {
               ))}
             </ul>
             <h3>Total: ${total}</h3>
-            <Link to="/checkout">
-              <button
-                onClick={handleProceedToCheckout}
-                style={{
-                  marginTop: '1rem',
-                  padding: '0.75rem 1.5rem',
-                  backgroundColor: '#10b981',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '4px',
-                  cursor: 'pointer'
-                }}
-              >
-  Proceed to Checkout
-</button>
-            </Link>	
+             <button
+               onClick={handleProceedToCheckout}
+               disabled={total === 0}
+               style={{
+                 marginTop: '1rem',
+                 padding: '0.75rem 1.5rem',
+                 backgroundColor: total === 0 ? '#ccc' : '#10b981',
+                 color: '#fff',
+                 border: 'none',
+                 borderRadius: '4px',
+                 cursor: total === 0 ? 'not-allowed' : 'pointer',
+                 opacity: total === 0 ? 0.6 : 1
+               }}
+             >
+               Proceed to Checkout
+             </button>
           </>
         )}
       </div>
