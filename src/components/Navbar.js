@@ -127,7 +127,8 @@ const { user } = useAuth();
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search products..."
               style={isMobile? {padding:'4px', borderRadius: '4px', border: '1px solid #ccc', maxWidth:'160px'}:{ padding:'4px', borderRadius: '4px', border: '1px solid #ccc' }}
-            />
+              maxLength={20}    
+		   />
             <button type="submit" style={navButtonStyle}>Search</button>
             
           </form>

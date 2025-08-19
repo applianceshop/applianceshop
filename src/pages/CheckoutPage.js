@@ -46,6 +46,13 @@ const CheckoutPage = () => {
   };
   const handleOrder = async (event) => {
     event.preventDefault()
+	const phoneDigits = phone.replace(/\s+/g, '');
+    const phoneOk = /^\+?\d{8,15}$/.test(phoneDigits);
+    if (!phoneOk) {
+      alert('Please enter a valid phone number (8–15 digits, optional +).');
+      setDisableSubmit(false);
+      return;
+    }
     setDisableSubmit(true)
     if (!address.trim()) {
       alert('Please enter a delivery address.');
@@ -211,15 +218,16 @@ const CheckoutPage = () => {
             borderRadius: '4px',
             border: '1px solid #ccc'
           }}
+		  maxLength={60}
         />
   
         {/* Phone Input */}
         <label style={{ display: 'block', margin: '1rem 0 0.5rem' }}>Phone Number:</label>
         <input
-          type="number"
+          type="tel"
           placeholder="Enter your phone number"
           value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          onChange={(e) => setPhone(e.target.value.replace(/[^\d+]/g, ''))}
           required
           style={{color:'black',
             width: '100%',
@@ -244,6 +252,8 @@ const CheckoutPage = () => {
             borderRadius: '4px',
             border: '1px solid #ccc'
           }}
+		  minLength={12}
+		  maxLength={240}
         />
   
         {/* Submit Button */}

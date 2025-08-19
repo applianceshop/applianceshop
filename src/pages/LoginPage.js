@@ -11,6 +11,10 @@ const LoginPage = () => {
 
   const handleAuth = async (event) => {
     event.preventDefault();
+	if (!email || !password) {
+     alert('Please fill in both email and password.');
+      return;
+    }
     try {
       if (isRegistering) {
         await createUserWithEmailAndPassword(auth, email, password); // ✅ Registration
@@ -40,6 +44,7 @@ const LoginPage = () => {
           value={email}
           onChange={e => setEmail(e.target.value)}
           style={{ width: '100%', marginBottom: '1rem', padding: '0.5rem', color: 'black' }}
+		  maxLength={40}
         />
         <input
           type="password"
@@ -47,6 +52,7 @@ const LoginPage = () => {
           value={password}
           onChange={e => setPassword(e.target.value)}
           style={{ width: '100%', marginBottom: '1rem', padding: '0.5rem', color: 'black' }}
+		  maxLength={32}
         />
         <button
           type='submit'
