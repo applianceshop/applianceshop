@@ -15,6 +15,8 @@ import MyOrders from './pages/MyOrders';
 import ProfilePage from './pages/ProfilePage';
 import SearchResultsPage from './pages/SearchResultsPage';
 import RequireAdmin from './auth/RequireAdmin';
+import ProductPage from './pages/ProductPage';
+import AdminProductDetail from './pages/AdminProductDetail';
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
 		  <Route path="/profile" element={<ProfilePage />} />
 		  <Route path="/search" element={<SearchResultsPage />} />
+		  <Route path="/product/:id" element={<ProductPage />} />
+		  <Route path="/admin/products/:id" element={<AdminProductDetail />} />
 		  <Route path="/my-orders" element={<MyOrders />} />
 
           {/* Protected admin routes */}
