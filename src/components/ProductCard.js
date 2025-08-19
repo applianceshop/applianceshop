@@ -1,5 +1,6 @@
  import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
   const useMediaQuery = (query) => {
@@ -45,14 +46,17 @@ const isMobile = useMediaQuery('(max-width: 600px)');
       backgroundColor: '#fff',
       boxShadow: '0 2px 6px rgba(0,0,0,0.1)'
     }}>
-      {product.image && (
-        <img
-          src={product.image}
-          alt={product.name}
-          style={{ width: '150px', height: '150px', objectFit: 'cover', borderRadius: '4px' }}
-        />
-      )}
-      <h3 style={{ margin: '0.5rem 0' }}>{product.name}</h3>
+
+	  <Link to={`/product/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+       {product.image && (
+         <img
+           src={product.image}
+           alt={product.name}
+           style={{ width: '150px', height: '150px', objectFit: 'cover', borderRadius: '4px' }}
+         />
+       )}
+       <h3 style={{ margin: '0.5rem 0' }}>{product.name}</h3>
+     </Link>
       <p style={{ fontWeight: 'bold' }}>${product.price}</p>
 
       {outOfStock ? (

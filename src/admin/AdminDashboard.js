@@ -241,7 +241,10 @@ const AdminDashboard = () => {
               alt={product.name}
               style={{ height: 50, marginRight: 10 }}
             />
-            <strong>{product.name}</strong> — ${product.price} ({product.category}) — Stock: {product.stock}
+            <Link to={`/admin/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <strong style={{ cursor: 'pointer', textDecoration: 'underline' }}>{product.name}</strong>
+            </Link>
+            &nbsp; — ${product.price} ({product.category}) — Stock: {product.stock}
             <button className="text-sm font-medium text-button hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-button focus:outline-none"
               onClick={() => {
                 if (window.confirm(" you are about to delete this product")) {
